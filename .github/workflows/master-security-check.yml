@@ -65,7 +65,7 @@ jobs:
           zip -r pygoat.zip . -i '*.py' '*.html' '*.js'
           java -jar /opt/veracode/api-wrapper.jar -vid "${{ secrets.VID }}" -vkey "${{ secrets.VKEY }}" -action UploadAndScan -createprofile false -appname "Pygoat-Showroom" -version "${{ github.run_id }}" -filepath pygoat.zip -scantimeout 20
 
-Veracode-SAST-Pipeline-Scan:
+  Veracode-SAST-Pipeline-Scan:
     runs-on: ubuntu-latest
     needs: [Install-Requeriments, Veracode-SCA-Agent-Action]
     container:
