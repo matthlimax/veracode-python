@@ -50,7 +50,7 @@ jobs:
     - cron: 15 14 * * 6
   workflow_dispatch:
 
-jobs:
+  jobs:
   veracode-sca-task:
     runs-on: ubuntu-latest
     name: Scan repository with Veracode SCA
