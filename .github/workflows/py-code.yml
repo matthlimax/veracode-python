@@ -51,7 +51,7 @@ jobs:
   workflow_dispatch:
 
   jobs:
-  veracode-sca-task:
+    veracode-sca-task:
     runs-on: ubuntu-latest
     name: Scan repository with Veracode SCA
 
