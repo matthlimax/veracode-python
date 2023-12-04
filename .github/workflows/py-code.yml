@@ -45,7 +45,6 @@ jobs:
           VID: ${{ secrets.VID }}
           VKEY: ${{ secrets.VKEY }}
           file: "verademo.war"
-
 on: 
   schedule:
     - cron: 15 14 * * 6
