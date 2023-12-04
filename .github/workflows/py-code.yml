@@ -2,15 +2,13 @@ name: Veracode Scan
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-
+    branches: [main]
   workflow_dispatch:
-
+  
 jobs:
-
-   veracode-sca-task:
+  veracode-sca-task:
     runs-on: ubuntu-latest
     name: Scan repository with Veracode SCA
 
@@ -22,16 +20,18 @@ jobs:
         env:
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
         uses: veracode/veracode-sca@v2.1.9
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create-issues: false
 
-
-Pipeline_scan:
+  pipeline_scan:
     needs: build
     runs-on: ubuntu-latest
-    name: pipeline scan
+    name: Pipeline Scan
 
     steps:
-      - name: chackout repo
-        uses: actions/chackout@v3
+      - name: checkout repo
+        uses: actions/checkout@v3
 
       - name: get archive
         uses: actions/download-artifact@v3
@@ -44,7 +44,7 @@ Pipeline_scan:
         with:
           VID: ${{ secrets.VID }}
           VKEY: ${{ secrets.VKEY }}
-          file: "verademo.war" 
+          file: "verademo.war"
 
 on: 
   schedule:
