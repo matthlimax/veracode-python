@@ -64,7 +64,7 @@ jobs:
         with:
           appname: 'VeraDemo'
           createprofile: false
-          filepath: 'app/target/veracode.zip'
+          filepath: 'veracode.zip'
           VID: '${{ secrets.VID }}'
           VKEY: '${{ secrets.VKEY }}'
 
