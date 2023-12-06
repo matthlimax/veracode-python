@@ -69,7 +69,7 @@ jobs:
           VKEY: '${{ secrets.API_KEY }}'
 
   pipeline_scan:
-    needs: [ build, Veracode-SCA-Agent-Action, policy scan ]
+    needs: [ build, Veracode-SCA-Agent-Action, policy_scan ]
     runs-on: ubuntu-latest
     name: Pipeline Scan
 
