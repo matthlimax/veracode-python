@@ -47,7 +47,7 @@ jobs:
         name: pacoteVeracode
         path: veracode.zip
 
-  Policy scan:
+  policy_scan:
     name: Policy Scan
     runs-on: ubuntu-latest
     needs: [ build, Veracode-SCA-Agent-Action ]
