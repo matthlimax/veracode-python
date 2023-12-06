@@ -63,7 +63,7 @@ jobs:
           AppName: Github Actions - ${{ github.repository }}
         with:
           VID: '$VID'
-          VKEY: '$VKey'
+          VKEY: '$VKEY'
           criticality: 'VeryHigh'
           appname: '$AppName'
           createsandbox: true
