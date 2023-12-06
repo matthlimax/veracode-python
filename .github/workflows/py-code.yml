@@ -65,11 +65,11 @@ jobs:
           appname: 'VeraDemo'
           createprofile: false
           filepath: 'app/target/veracode.zip'
-          VID: '${{ secrets.API_ID }}'
-          VKEY: '${{ secrets.API_KEY }}'
+          VID: '${{ secrets.VID }}'
+          VKEY: '${{ secrets.VKEY }}'
 
   pipeline_scan:
-    needs: [ build, Veracode-SCA-Agent-Action, policy_scan ]
+    needs: [ build, Veracode-SCA-Agent-Action ]
     runs-on: ubuntu-latest
     name: Pipeline Scan
 
