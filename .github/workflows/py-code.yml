@@ -58,12 +58,12 @@ jobs:
       - name: UploadAndScan
         uses: veracode/veracode-uploadandscan-action@master # Faz a analise da Veracode
         env:
-          VID: ${{ secrets.VeracodeID }} # Lembrar de criar as credenciais no Secrets
-          VKEY: ${{ secrets.VeracodeKey }}
+          VID: ${{ secrets.VID }} # Lembrar de criar as credenciais no Secrets
+          VKEY: ${{ secrets.VKEY }}
           AppName: Github Actions - ${{ github.repository }}
         with:
-          VID: '$VeracodeID'
-          VKEY: '$VeracodeKey'
+          VID: '$VID'
+          VKEY: '$VKey'
           criticality: 'VeryHigh'
           appname: '$AppName'
           createsandbox: true
