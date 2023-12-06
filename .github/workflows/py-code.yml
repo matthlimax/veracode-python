@@ -47,32 +47,29 @@ jobs:
         name: pacoteVeracode
         path: veracode.zip
 
-  policy_scan:
+  Policy scan:
+    name: Policy Scan
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ build, Veracode-SCA-Agent-Action ]
+    
     steps:
-      - name: Download Artefato
-        uses: actions/download-artifact@v2
+      - name: checkout repo
+        uses: actions/checkout@v2
+        
+      - name: get archive
+        run: python -m pip install --no-cache-dir pip==22.0.4
+          
+      - name: Veracode Upload And Scan
+        uses: veracode/veracode-uploadandscan-action@0.2.6
         with:
-          name: pacoteVeracode
-      - name: policy scan
-        uses: veracode/veracode-uploadandscan-action@master 
-        env:
-          VeracodeID: ${{ secrets.VeracodeID }} 
-          VeracodeKey: ${{ secrets.VeracodeKey }}
-          AppName: Github Actions - ${{ github.repository }}
-        with:
-          vid: '$VeracodeID'
-          vkey: '$VeracodeKey'
-          criticality: 'VeryHigh'
-          appname: '$AppName'
-          createsandbox: true
-          filepath: 'veracode.zip'
-          deleteIncompleteScan: false
-          version: ${{ github.run_id }}
+          appname: 'VeraDemo'
+          createprofile: false
+          filepath: 'app/target/veracode.zip'
+          VID: '${{ secrets.API_ID }}'
+          VKEY: '${{ secrets.API_KEY }}'
 
   pipeline_scan:
-    needs: [ build, Veracode-SCA-Agent-Action ]
+    needs: [ build, Veracode-SCA-Agent-Action, Policy scan ]
     runs-on: ubuntu-latest
     name: Pipeline Scan
 
