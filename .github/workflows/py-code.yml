@@ -68,7 +68,6 @@ jobs:
           appname: '$AppName'
           createsandbox: true
           filepath: 'veracode.zip'
-          deleteIncompleteScan: false
           version: ${{ github.run_id }}
 
   pipeline_scan:
