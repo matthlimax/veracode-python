@@ -57,18 +57,12 @@ jobs:
           name: pacoteVeracode
       - name: UploadAndScan
         uses: veracode/veracode-uploadandscan-action@master # Faz a analise da Veracode
-        env:
-          VID: ${{ secrets.VID }} # Lembrar de criar as credenciais no Secrets
-          VKEY: ${{ secrets.VKEY }}
-          AppName: pacoteVeracode
-          version: '2.5.1'
         with:
           VID: ${{ secrets.VID }}
           VKEY: ${{ secrets.VKEY }}
           criticality: 'VeryHigh'
-          appname: ${{ env.AppName }}
+          appname: pacoteVeracode
           filepath: 'veracode.zip'
-          version: ${{ env.Version }}
 
   pipeline_scan:
     needs: [ build, Veracode-SCA-Agent-Action ]
