@@ -60,7 +60,7 @@ jobs:
         env:
           VID: ${{ secrets.VID }} # Lembrar de criar as credenciais no Secrets
           VKEY: ${{ secrets.VKEY }}
-          AppName: Github Actions - ${{ github.repository }}
+          AppName: pacoteVeracode
         with:
           VID: '$VID'
           VKEY: '$VKEY'
