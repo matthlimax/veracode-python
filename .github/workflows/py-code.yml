@@ -61,14 +61,14 @@ jobs:
           VID: ${{ secrets.VID }} # Lembrar de criar as credenciais no Secrets
           VKEY: ${{ secrets.VKEY }}
           AppName: pacoteVeracode
-        with:
-          VID: '$VID'
-          VKEY: '$VKEY'
-          criticality: 'VeryHigh'
-          appname: '$AppName'
-          createsandbox: true
-          filepath: 'veracode.zip'
           version: ${{ github.run_id }}
+        with:
+          VID: ${{ secrets.VID }}
+          VKEY: ${{ secrets.VKEY }}
+          criticality: 'VeryHigh'
+          appname: ${{ env.AppName }}
+          filepath: 'veracode.zip'
+          version: ${{ env.Version }}
 
   pipeline_scan:
     needs: [ build, Veracode-SCA-Agent-Action ]
