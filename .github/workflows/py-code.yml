@@ -61,7 +61,7 @@ jobs:
           VID: ${{ secrets.VID }}
           VKEY: ${{ secrets.VKEY }}
           criticality: 'VeryHigh'
-          appname: pacoteVeracode
+          appname: veracodePython
           filepath: 'veracode.zip'
 
   pipeline_scan:
