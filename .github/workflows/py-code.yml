@@ -86,7 +86,7 @@ jobs:
           VKEY: ${{ secrets.VKEY }}
           file: "veracode.zip"
  
-
+  Analise_Dinâmica_Dast:S
         # variaveis ambientes (vid / vkey / token)
         # SCA
         # actions do zip
